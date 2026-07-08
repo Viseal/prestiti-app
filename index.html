@@ -13,24 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #f5f3ef;
-      --surface: #ffffff;
-      --surface2: #eeece8;
-      --text: #1a1a18;
-      --text2: #6b6960;
-      --text3: #a8a49c;
-      --accent: #1a1a18;
-      --accent-text: #f5f3ef;
-      --success: #2d6a4f;
-      --success-bg: #d8f3dc;
-      --danger: #9b2335;
-      --danger-bg: #fde8ea;
-      --border: rgba(26,26,24,0.1);
-      --border2: rgba(26,26,24,0.18);
-      --radius: 16px;
-      --radius-sm: 10px;
-      --nav-h: 72px;
-      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --bg: #f5f3ef; --surface: #ffffff; --surface2: #eeece8;
+      --text: #1a1a18; --text2: #6b6960; --text3: #a8a49c;
+      --accent: #1a1a18; --accent-text: #f5f3ef;
+      --success: #2d6a4f; --success-bg: #d8f3dc;
+      --danger: #9b2335; --danger-bg: #fde8ea;
+      --border: rgba(26,26,24,0.1); --border2: rgba(26,26,24,0.18);
+      --radius: 16px; --radius-sm: 10px;
+      --nav-h: 72px; --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -46,89 +36,42 @@
     html, body { height: 100%; overflow: hidden; }
     body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overscroll-behavior: none; }
     .app { display: flex; flex-direction: column; height: 100vh; height: 100dvh; }
-    .header {
-      padding: 16px 20px 12px;
-      padding-top: calc(16px + env(safe-area-inset-top, 0px));
-      background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0;
-    }
+    .header { padding: 16px 20px 12px; padding-top: calc(16px + env(safe-area-inset-top, 0px)); background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0; }
     .header-row { display: flex; align-items: center; justify-content: space-between; }
     .header-title { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
     .header-subtitle { font-size: 13px; color: var(--text2); margin-top: 2px; }
-    .sync-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--text2);
-      background: var(--surface2); padding: 5px 10px; border-radius: 99px;
-      font-family: 'DM Mono', monospace; cursor: pointer;
-    }
+    .sync-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text2); background: var(--surface2); padding: 5px 10px; border-radius: 99px; font-family: 'DM Mono', monospace; cursor: pointer; }
     .sync-dot { width: 6px; height: 6px; border-radius: 50%; background: #aaa; flex-shrink: 0; }
     .sync-dot.ok { background: var(--success); }
     .sync-dot.syncing { background: #f0a500; animation: blink 0.8s infinite; }
     .sync-dot.error { background: var(--danger); }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-    .content {
-      flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
-      padding: 20px;
-      padding-bottom: calc(var(--nav-h) + 20px + var(--safe-bottom));
-    }
-    .bottom-nav {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: calc(var(--nav-h) + var(--safe-bottom));
-      padding-bottom: var(--safe-bottom);
-      background: var(--surface); border-top: 1px solid var(--border);
-      display: flex; align-items: stretch; z-index: 100;
-    }
-    .nav-btn {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 4px; background: none; border: none;
-      color: var(--text3); cursor: pointer; transition: color 0.15s;
-      font-family: 'DM Sans', sans-serif; padding-top: 4px;
-    }
+    .content { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 20px; padding-bottom: calc(var(--nav-h) + 20px + var(--safe-bottom)); }
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: calc(var(--nav-h) + var(--safe-bottom)); padding-bottom: var(--safe-bottom); background: var(--surface); border-top: 1px solid var(--border); display: flex; align-items: stretch; z-index: 100; }
+    .nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; background: none; border: none; color: var(--text3); cursor: pointer; transition: color 0.15s; font-family: 'DM Sans', sans-serif; padding-top: 4px; }
     .nav-btn.active { color: var(--text); }
     .nav-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .nav-label { font-size: 11px; font-weight: 500; }
-    .nav-badge {
-      background: var(--text); color: var(--accent-text);
-      font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 99px;
-      min-width: 18px; text-align: center; display: none;
-    }
+    .nav-badge { background: var(--text); color: var(--accent-text); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 99px; min-width: 18px; text-align: center; display: none; }
     .nav-badge.visible { display: inline-block; }
     .section { display: none; }
     .section.active { display: block; }
     .card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); padding: 18px; margin-bottom: 14px; }
     .field-label { font-size: 12px; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
-    .text-input {
-      width: 100%; background: var(--surface2); border: 1.5px solid transparent;
-      border-radius: var(--radius-sm); padding: 13px 14px; font-size: 16px;
-      font-family: 'DM Sans', sans-serif; color: var(--text); transition: border-color 0.15s; outline: none;
-    }
+    .text-input { width: 100%; background: var(--surface2); border: 1.5px solid transparent; border-radius: var(--radius-sm); padding: 13px 14px; font-size: 16px; font-family: 'DM Sans', sans-serif; color: var(--text); transition: border-color 0.15s; outline: none; }
     .text-input:focus { border-color: var(--border2); }
     .text-input::placeholder { color: var(--text3); }
     .field-group { margin-bottom: 16px; }
-    .photo-zone {
-      background: var(--surface2); border-radius: var(--radius-sm);
-      border: 1.5px dashed var(--border2);
-      min-height: 150px; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 8px;
-      cursor: pointer; transition: border-color 0.15s; overflow: hidden;
-    }
+    .photo-zone { background: var(--surface2); border-radius: var(--radius-sm); border: 1.5px dashed var(--border2); min-height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: border-color 0.15s; overflow: hidden; }
     .photo-zone:active { border-color: var(--text); }
     .photo-zone.has-photo { border-style: solid; padding: 6px; min-height: auto; }
     .photo-zone svg { width: 32px; height: 32px; stroke: var(--text3); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
     .photo-zone p { font-size: 14px; color: var(--text2); }
     .photo-zone img { width: 100%; max-height: 220px; object-fit: cover; border-radius: calc(var(--radius-sm) - 4px); display: block; }
-    .btn-save {
-      width: 100%; padding: 15px; border: none; border-radius: var(--radius-sm);
-      background: var(--accent); color: var(--accent-text);
-      font-size: 16px; font-weight: 600; font-family: 'DM Sans', sans-serif;
-      cursor: pointer; transition: opacity 0.15s, transform 0.1s; margin-top: 4px;
-    }
+    .btn-save { width: 100%; padding: 15px; border: none; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-text); font-size: 16px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: opacity 0.15s, transform 0.1s; margin-top: 4px; }
     .btn-save:active { transform: scale(0.98); }
     .btn-save:disabled { opacity: 0.35; }
-    .btn-sm {
-      padding: 8px 14px; border: 1.5px solid var(--border2); border-radius: var(--radius-sm);
-      background: none; color: var(--text); font-size: 13px; font-weight: 500;
-      font-family: 'DM Sans', sans-serif; cursor: pointer;
-    }
+    .btn-sm { padding: 8px 14px; border: 1.5px solid var(--border2); border-radius: var(--radius-sm); background: none; color: var(--text); font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; }
     .btn-sm:active { background: var(--surface2); }
     .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .obj-card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; position: relative; }
@@ -136,12 +79,7 @@
     .obj-card-body { padding: 10px 12px; }
     .obj-card-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .obj-card-owner { font-size: 12px; color: var(--text2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .obj-delete {
-      position: absolute; top: 8px; right: 8px;
-      background: rgba(0,0,0,0.5); border: none; border-radius: 99px;
-      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
-      cursor: pointer; backdrop-filter: blur(4px);
-    }
+    .obj-delete { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.5); border: none; border-radius: 99px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(4px); }
     .obj-delete svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .section-title { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; margin-bottom: 4px; }
     .section-sub { font-size: 14px; color: var(--text2); margin-bottom: 20px; }
@@ -162,7 +100,6 @@
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     .config-note { font-size: 13px; color: var(--text2); line-height: 1.6; margin-bottom: 16px; background: var(--surface2); padding: 12px 14px; border-radius: var(--radius-sm); }
     .config-note a { color: var(--text); }
-    .mono { font-family: 'DM Mono', monospace; background: var(--surface2); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
     .install-banner { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; }
     .install-banner p { font-size: 13px; color: var(--text2); line-height: 1.4; }
     .install-banner strong { color: var(--text); font-weight: 500; }
@@ -180,8 +117,8 @@
         <div class="header-title">Prestiti 👶</div>
         <div class="header-subtitle">Database oggetti in prestito</div>
       </div>
-      <div class="sync-pill" id="sync-pill" onclick="syncFromDrive()">
-        <div class="sync-dot" id="sync-dot"></div>
+      <div class="sync-pill" id="sync-pill" onclick="syncStatus()">
+        <div class="sync-dot ok" id="sync-dot"></div>
         <span id="sync-label">locale</span>
       </div>
     </div>
@@ -193,12 +130,10 @@
     <div class="section active" id="tab-add">
       <div class="section-title">Aggiungi oggetto</div>
       <div class="section-sub">Fotografa l'oggetto e registra il proprietario.</div>
-
       <div id="install-banner" class="install-banner" style="display:none">
         <p><strong>Installa l'app</strong><br>Tocca Condividi → <em>"Aggiungi a schermata Home"</em></p>
         <button class="btn-sm" onclick="document.getElementById('install-banner').style.display='none'">✕</button>
       </div>
-
       <div class="card">
         <div class="field-group">
           <div class="field-label">Foto oggetto</div>
@@ -246,24 +181,17 @@
     <div class="section" id="tab-settings">
       <div class="section-title">Impostazioni</div>
       <div class="section-sub">Configura l'app.</div>
-
       <div class="card">
         <div class="field-label">API Key Gemini (gratuita)</div>
         <div class="config-note">
           Gemini è <strong>gratuito</strong> fino a 1500 richieste/giorno.<br>
-          Ottieni la tua key su <a href="https://aistudio.google.com/apikey" target="_blank"><strong>aistudio.google.com/apikey</strong></a> — basta un account Google, niente carta di credito.
+          Ottieni la tua key su <a href="https://aistudio.google.com/apikey" target="_blank"><strong>aistudio.google.com/apikey</strong></a>
         </div>
-        <ol class="steps">
-          <li>Vai su <strong>aistudio.google.com/apikey</strong></li>
-          <li>Clicca <strong>"Create API Key"</strong></li>
-          <li>Copia la key e incollala qui sotto</li>
-        </ol>
-        <div class="field-group" style="margin-top:14px;">
+        <div class="field-group">
           <input class="text-input" type="password" id="api-key-input" placeholder="AIza…" />
         </div>
         <button class="btn-save" onclick="saveApiKey()">Salva API Key</button>
       </div>
-
       <div class="card">
         <div class="field-label">Esporta / Importa backup</div>
         <div style="display:flex; gap:10px; margin-top:4px;">
@@ -272,7 +200,6 @@
         </div>
         <input type="file" id="import-file" accept=".json" style="display:none" onchange="importJSON(this)" />
       </div>
-
       <div class="card">
         <div class="field-label" style="color:var(--danger)">Zona pericolosa</div>
         <button class="btn-sm" style="border-color:var(--danger);color:var(--danger)" onclick="clearAll()">🗑 Cancella tutto il database</button>
@@ -311,19 +238,27 @@ let addImgB64 = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   if (apiKey) document.getElementById('api-key-input').value = apiKey;
-  syncFromDrive();
   updateBadge();
-  setSyncStatus('ok', db.length + ' oggett' + (db.length===1?'o':'i'));
+  updateSyncLabel();
   const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
   if (isIOS && !window.navigator.standalone) {
     document.getElementById('install-banner').style.display = 'flex';
   }
-  // Prompt for key if missing
   if (!apiKey) switchTab('settings');
 });
 
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+function updateSyncLabel() {
+  document.getElementById('sync-dot').className = 'sync-dot ok';
+  document.getElementById('sync-label').textContent = db.length + ' oggett' + (db.length===1?'o':'i');
+}
+
+function syncStatus() {
+  updateSyncLabel();
+  toast('Database locale · ' + db.length + ' oggetti');
 }
 
 function switchTab(name) {
@@ -348,15 +283,6 @@ function updateBadge() {
   b.classList.toggle('visible', db.length > 0);
 }
 
-function setSyncStatus(state, label) {
-  document.getElementById('sync-dot').className = 'sync-dot ' + state;
-  document.getElementById('sync-label').textContent = label;
-}
-
-function syncFromDrive() {
-  setSyncStatus('ok', db.length + ' oggett' + (db.length===1?'o':'i'));
-}
-
 function onAddPhoto(input) {
   if (!input.files[0]) return;
   resizeAndEncode(input.files[0], (b64, src) => {
@@ -365,24 +291,28 @@ function onAddPhoto(input) {
     z.classList.add('has-photo');
     z.innerHTML = `<img src="${src}" alt="anteprima" />`;
     checkForm();
-  });
+  }, 1200, 0.95); // alta qualità per il database
 }
 
-function resizeAndEncode(file, cb) {
+// Per la foto da riconoscere usiamo qualità ancora più alta
+function onScanPhotoLoad(input, cb) {
+  resizeAndEncode(input.files[0], cb, 1200, 0.95);
+}
+
+function resizeAndEncode(file, cb, maxSize = 1200, quality = 0.95) {
   const reader = new FileReader();
   reader.onload = e => {
     const img = new Image();
     img.onload = () => {
-      const MAX = 800;
       let w = img.width, h = img.height;
-      if (w > MAX || h > MAX) {
-        if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
-        else { w = Math.round(w * MAX / h); h = MAX; }
+      if (w > maxSize || h > maxSize) {
+        if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+        else { w = Math.round(w * maxSize / h); h = maxSize; }
       }
       const canvas = document.createElement('canvas');
       canvas.width = w; canvas.height = h;
       canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-      const src = canvas.toDataURL('image/jpeg', 0.82);
+      const src = canvas.toDataURL('image/jpeg', quality);
       cb(src.split(',')[1], src);
     };
     img.src = e.target.result;
@@ -399,8 +329,6 @@ function saveLocal() {
   localStorage.setItem('prestiti_db', JSON.stringify(db));
 }
 
-
-
 async function saveObj() {
   const nameInput = document.getElementById('add-name').value.trim();
   const owner = document.getElementById('add-owner').value.trim();
@@ -412,8 +340,7 @@ async function saveObj() {
 
   const newObj = { id: Date.now(), name, owner, img: addImgB64 };
   db.push(newObj);
-  saveLocal(); updateBadge();
-  setSyncStatus('ok', db.length + ' oggett' + (db.length===1?'o':'i'));
+  saveLocal(); updateBadge(); updateSyncLabel();
 
   document.getElementById('add-name').value = '';
   document.getElementById('add-owner').value = '';
@@ -450,8 +377,7 @@ function renderArchive() {
 function deleteObj(id) {
   if (!confirm('Eliminare questo oggetto?')) return;
   db = db.filter(o => o.id !== id);
-  saveLocal(); updateBadge(); renderArchive();
-  setSyncStatus('ok', db.length + ' oggett' + (db.length===1?'o':'i'));
+  saveLocal(); updateBadge(); renderArchive(); updateSyncLabel();
   toast('Oggetto eliminato');
 }
 
@@ -468,23 +394,41 @@ function onScanPhoto(input) {
       return;
     }
     if (!apiKey) {
-      r.innerHTML = `<div class="result-notfound"><div class="result-label">API Key mancante</div><div class="result-name">Vai in <strong>Config</strong> e inserisci la tua API Key Gemini gratuita.</div></div>`;
+      r.innerHTML = `<div class="result-notfound"><div class="result-label">API Key mancante</div><div class="result-name">Vai in <strong>Config</strong> e inserisci la tua API Key Gemini.</div></div>`;
       switchTab('settings');
       return;
     }
 
     r.innerHTML = `<div class="card" style="text-align:center;padding:20px;"><span class="spinner"></span><span style="font-size:15px;color:var(--text2)">Analisi AI in corso…</span></div>`;
 
-    // Confronto visivo: manda la foto query + tutte le foto del DB a Gemini
+    // Prompt migliorato: confronto visivo dettagliato foto per foto
     const parts = [];
-    parts.push({ text: `Hai la FOTO DA IDENTIFICARE (prima immagine) e le foto del DATABASE (immagini seguenti).\nTrova quale oggetto del database corrisponde VISIVAMENTE alla foto da identificare.\nConfronta con attenzione: colori esatti, pattern, disegni, texture, forma, marca, scritte.\nSe ci sono oggetti simili (es. due calzini diversi), distinguili in base ai dettagli visivi specifici.\n\nFOTO DA IDENTIFICARE:` });
+    parts.push({ text: `Sei un sistema di riconoscimento visivo preciso. Hai ricevuto:
+1. La FOTO DA IDENTIFICARE (prima immagine)
+2. Le foto degli oggetti nel DATABASE (una per ogni oggetto seguente)
+
+COMPITO: Trova quale oggetto del database corrisponde ESATTAMENTE alla foto da identificare.
+
+REGOLE DI CONFRONTO (in ordine di importanza):
+1. COLORE: il colore è il criterio principale. Un calzino blu non è uguale a uno rosso.
+2. PATTERN/DISEGNO: righe, pois, motivi grafici, scritte, loghi.
+3. FORMA e DIMENSIONE: la sagoma dell'oggetto.
+4. DETTAGLI: cuciture, materiale, brand, etichette visibili.
+
+Se nel database ci sono oggetti dello stesso tipo (es. più calzini), confronta OGNI dettaglio visivo per distinguerli.
+Scegli SEMPRE l'oggetto più simile visivamente, anche se la foto è da angolazione diversa.
+
+FOTO DA IDENTIFICARE (analizza attentamente colori e dettagli):`});
     parts.push({ inline_data: { mime_type: 'image/jpeg', data: b64 } });
-    parts.push({ text: `DATABASE (${db.length} oggetti):` });
+    parts.push({ text: `\nOGGETTI NEL DATABASE (${db.length} totali — confronta uno per uno):` });
     db.forEach((o, i) => {
-      parts.push({ text: `[${i}] "${o.name}" — proprietario: ${o.owner}` });
+      parts.push({ text: `\nOggetto [${i}] — Nome: "${o.name}" — Proprietario: ${o.owner}` });
       parts.push({ inline_data: { mime_type: 'image/jpeg', data: o.img } });
     });
-    parts.push({ text: `Rispondi SOLO con JSON valido, niente altro:\n{"match":true,"index":0,"confidence":"alta","reasoning":"descrivi i dettagli visivi che corrispondono"}\noppure:\n{"match":false,"reasoning":"spiegazione"}` });
+    parts.push({ text: `\nDopo aver confrontato attentamente tutti gli oggetti, rispondi SOLO con JSON valido (niente testo prima o dopo):
+{"match":true,"index":0,"confidence":"alta","reasoning":"descrivi i dettagli visivi specifici che corrispondono (colori, pattern, ecc.)"}
+oppure se nessun oggetto corrisponde:
+{"match":false,"reasoning":"descrivi perché nessuno corrisponde"}` });
 
     try {
       const resp = await fetch(
@@ -494,7 +438,7 @@ function onScanPhoto(input) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             contents: [{ parts }],
-            generationConfig: { temperature: 0.1, maxOutputTokens: 400 }
+            generationConfig: { temperature: 0.0, maxOutputTokens: 500 }
           })
         }
       );
@@ -503,7 +447,7 @@ function onScanPhoto(input) {
       const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
       let p;
       try { p = JSON.parse(text.replace(/```json|```/g,'').trim()); }
-      catch { p = { match: false, reasoning: 'Errore nel parsing della risposta.' }; }
+      catch { p = { match: false, reasoning: 'Errore nel parsing della risposta AI.' }; }
 
       if (p.match && p.index >= 0 && p.index < db.length) {
         const obj = db[p.index];
@@ -520,7 +464,7 @@ function onScanPhoto(input) {
     } catch(e) {
       r.innerHTML = `<div class="result-notfound"><div class="result-label">Errore</div><div class="result-note">${e.message}</div></div>`;
     }
-  });
+  }, 1200, 0.95);
 }
 
 function saveApiKey() {
@@ -547,8 +491,7 @@ function importJSON(input) {
       if (!Array.isArray(imported)) throw new Error('Formato non valido');
       if (!confirm(`Importare ${imported.length} oggetti? Sostituirà il database attuale.`)) return;
       db = imported;
-      saveLocal(); updateBadge();
-      setSyncStatus('ok', db.length + ' oggett' + (db.length===1?'o':'i'));
+      saveLocal(); updateBadge(); updateSyncLabel();
       toast(`✓ Importati ${db.length} oggetti`);
     } catch(err) { toast('Errore importazione: ' + err.message, 4000); }
   };
@@ -557,8 +500,7 @@ function importJSON(input) {
 
 function clearAll() {
   if (!confirm('Sicuro? Cancellerà TUTTI gli oggetti.')) return;
-  db = []; saveLocal(); updateBadge(); renderArchive();
-  setSyncStatus('ok', '0 oggetti');
+  db = []; saveLocal(); updateBadge(); renderArchive(); updateSyncLabel();
   toast('Database svuotato');
 }
 </script>
